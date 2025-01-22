@@ -1,0 +1,728 @@
+Delivered-To: danny871005@gmail.com
+Received: by 2002:a05:7110:a024:b0:236:1973:856e with SMTP id r4csp1376084gee;
+        Sun, 12 May 2024 06:16:48 -0700 (PDT)
+X-Received: by 2002:aca:220c:0:b0:3c9:676e:5853 with SMTP id 5614622812f47-3c996c8f9c1mr3118751b6e.9.1715519808681;
+        Sun, 12 May 2024 06:16:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1715519808; cv=none;
+        d=google.com; s=arc-20160816;
+        b=BIJoX09URGdUU4V4rQkMqwAF5vtrWdDFLy/p+Pmk5X/wJSUpSOYMacnwebnELWaw0V
+         fd/HzUXtglYmFN4bEt+xMg8m/fPw5NnHRl4eZ8Zo6ZIA7BuZYV4tiI/T6uLTQsIyt3nB
+         YdLQj1wFG9e79CjcRLubFu/8vk0M1UjJDQtDyTXBZRtJlTsvd4ScjEup5IAsdT8HKhGp
+         j+YI/LMmriBj0JXsQ/QZOhSmlYT5v8f4D77eDqlN/dxMKpnz5Uz0rFNLx64lUf+vHwhj
+         DYNlKhMyyKY4cCbcGgGIm2bgfQb4gEtO9FioTxAFsvFILNqbePVw3JQ+iH/z6G9G6od6
+         wCgA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from:subject:date:message-id:feedback-id:mime-version
+         :dkim-signature;
+        bh=Em3MewPXqL+YY9SeitNWMm8DTNLQWO7qIfpTXyzwDn0=;
+        fh=YeFLTEBuiL36hU6tcX68fQUDk2kV7OxDgyJqX8u2Ong=;
+        b=QFH8Xt4toawmPVYZ48ViCtO7Gt40A7M7cyrUqc6/Zbc0h36mlL1UOxXp7NSppU17o8
+         uf7UaNLrQj1cYC9HEirJE3Idd4tY+PWbXFBqCidAncROWoK9RuPEPuQNfd2VzXQSAgkQ
+         k4WzT0bdxQzwcofCD8tlTeNoo7PN8Z4KNc83BViAGqvSCcqRJxQo8tCttc0MJspqwkcs
+         yc8DrY4wHgYWZ3bjPanjKZIZp+DFTeXPH3XoumXdbNQxtZWRIIwpyIMxKK1H5rm6dC4u
+         cd8kg0Q+r9ZbDEzhkJivcjeG8hBxYrRDwCIB7sH4IPHO/mOuuT+xEXErrpa8G5E2NfBR
+         C3Tg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=ineCD2IH;
+       spf=pass (google.com: domain of 3qmfazhykap0ktwrx-wjhjnuyx-stwjuq3lttlqj.htr@trix.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3QMFAZhYKAP0ktwrx-wjhjnuyx-stwjuq3lttlqj.htr@trix.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <3QMFAZhYKAP0ktwrx-wjhjnuyx-stwjuq3lttlqj.htr@trix.bounces.google.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id 5614622812f47-3c9a4448280sor483072b6e.0.2024.05.12.06.16.48
+        for <danny871005@gmail.com>
+        (Google Transport Security);
+        Sun, 12 May 2024 06:16:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3qmfazhykap0ktwrx-wjhjnuyx-stwjuq3lttlqj.htr@trix.bounces.google.com designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=ineCD2IH;
+       spf=pass (google.com: domain of 3qmfazhykap0ktwrx-wjhjnuyx-stwjuq3lttlqj.htr@trix.bounces.google.com designates 209.85.220.69 as permitted sender) smtp.mailfrom=3QMFAZhYKAP0ktwrx-wjhjnuyx-stwjuq3lttlqj.htr@trix.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1715519808; x=1716124608; dara=google.com;
+        h=to:from:subject:date:message-id:feedback-id:mime-version:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Em3MewPXqL+YY9SeitNWMm8DTNLQWO7qIfpTXyzwDn0=;
+        b=ineCD2IHbJ0GnsfTTP8VPdV4T61BMolie6YG8ZSFdx+iU7YuE0enbxWJfmL0rQRZgp
+         x+y0HchIBGPKs9LtBkKYagH29E6chRCs4EhKWTYXTl9VHH63BjNE5LzB3fbSr6wpLM0D
+         k+CC1JmYNQB+fjcfYiZmTTG9OlA41f1hJTY94f98Gf3Qqz0Y22KaHoX0Ysf7JST/Cbws
+         s5SDXozoeTVr7phV1fOXJtb0AadhtwiU/H496VZpmzHY1Vb2uauo31ax1oR9lrR7x2Z1
+         YSGNUStnrj6vpwCDg+W6fmD/PU3jftbrwRryqaLdnHaxqqfdPFcHjwCZlZ9HsmAytEJi
+         +REA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1715519808; x=1716124608;
+        h=to:from:subject:date:message-id:feedback-id:mime-version
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Em3MewPXqL+YY9SeitNWMm8DTNLQWO7qIfpTXyzwDn0=;
+        b=OIUy+5nNDBg46wIyuEeL+mTLknxytWTIhpOrl0m13k7ZfFTNlOsWawX7wOk7p/5Kyd
+         sjE4iKDtZjM/oE70bWHLEAToFU3JjX8Ur2xSHFcAnec478xHwa2mSroSWBUG4B9rnnQC
+         GKouapIV/gt5EzHDDRHInDp81TesQEpPOyFDEp6IIxaAnp4hMc6ofzQh4WD+XNh6Wue9
+         XAQC6YWwtXL9+xkv7SCaaMGKqXYYnWECnZnqhbgx0b02Obf7VxNOZu2qDHTNkmM8Do/k
+         mEupxNHQ/WVT/aQ/FYnOKBYFuAaRc4wD22yhv6e/JyLT6+NsPPKh2Td+2cM2gnL9nVjY
+         pjMw==
+X-Gm-Message-State: AOJu0YwxV3vhGb5exIPN5Q/tsIs8/p2AangpOQ61/GKXpT4XFq4onwBp
+	C5jxEFHx5TfQUZQrUTOpnyxGLtYh8RYX1zE0ttf75LdGBHN80mdFN3CCFa2Zr08rgEv3fOx0wYT
+	2boPW0PkGmXPiRRxy2koaOpQA3S5bcEB7pNs=
+X-Google-Smtp-Source: AGHT+IGfu5SyBMbZcOovdbDP2cvLHqTvhCR8P7qodxQqgnQ6ADgY6BEWWS37SAPjh2G4GPXb0Eg9p3Z/7PEHbJI36tAk0w==
+MIME-Version: 1.0
+X-Received: by 2002:a05:6808:118d:b0:3c3:dcb9:118a with SMTP id
+ 5614622812f47-3c98d99309amr4376310b6e.28.1715519808371; Sun, 12 May 2024
+ 06:16:48 -0700 (PDT)
+Feedback-ID: MailTypeResponseReceipt:GoogleForms
+X-GoogleForms-FormId: e/1FAIpQLSdD_iJnfpu-7P8VH8LR99pM-aSHK4fgXtZTKWdwHrlKMECUqQ
+X-GoogleForms-IsConsumerForm: true
+Message-ID: <autogen-java-b68f5f43-08b7-4080-96a6-0f745058cfce@google.com>
+Date: Sun, 12 May 2024 13:16:48 +0000
+Subject: =?UTF-8?B?QVdTIEVkdWNhdGUg6K2J54Wn6Zmq6LeR6KiI55WrIC0gNS8xMCDorYnnhafpgLLluqY=?=
+	=?UTF-8?B?6Kqy56iL77yI5LiA77yJ5bCP6ICD?=
+From: =?UTF-8?B?R29vZ2xlIOihqOWWrg==?= <forms-receipts-noreply@google.com>
+To: danny871005@gmail.com
+Content-Type: multipart/alternative; boundary="000000000000c8991d06184194ba"
+
+--000000000000c8991d06184194ba
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+R29vZ2xlIOihqOWWrg0KDQoNCuaEn+isneaCqOWhq+Wvq+OAjEFXUyBFZHVjYXRlIOitieeFp+mZ
+qui3keioiOeVqyAtIDUvMTAg6K2J54Wn6YCy5bqm6Kqy56iL77yI5LiA77yJ5bCP6ICD44CNDQrk
+u6XkuIvmmK/miJHlgJHmlLbliLDnmoTlm57opobjgIINCg0K5p+l55yL5YiG5pW4DQoNCg0KQVdT
+IEVkdWNhdGUg6K2J54Wn6Zmq6LeR6KiI55WrIC0gNS8xMCDorYnnhafpgLLluqboqrLnqIvvvIjk
+uIDvvInlsI/ogIMNCg0K4pqg77iP5aSn5a626KaB5LmW5LmW5a6M5oiQ5bCP6ICD5Lim5LiU5Zyo
+6K2J54Wn6Kqy56iL57WQ5p2f5b6M5YWp5aSp5YWn5a6M5oiQ5ZaU77yBDQoNCuKaoO+4j+mHjeim
+geaPkOmGkiDvvJrlj6rmnInlrozmiJDlsI/ogIPnmoTlkIzlrbjmiY3mnInos4fmoLzloLHlkI3l
+voznuoznmoTorJvluqfoqrLnqIvllpTvvIENCg0KDQoNCuWwj+iAg+evhOWcje+8mkNoMyBBV1Mg
+5YWo55CD5Z+656SO6Kit5pa977yG5Y+v6Z2g5oCn44CBQ2g0IOmAo+e2sg0K6aGM5pW477yaMTDp
+oYwNCuWujOaIkOaZgumWk++8mjUvMTB+NS8xMiAyNDowMCDliY3lrozmiJANCg0KDQrns7vntbHl
+t7LlnKjkvaDmj5DkuqTpgJnku73ooajllq7mmYLoqJjpjITkvaDnmoTpm7vlrZDpg7Xku7blnLDl
+nYAgKGRhbm55ODcxMDA1QGdtYWlsLmNvbSnjgIINCg0KDQrlp5PlkI0gKg0KDQoNCuadjuWxlee3
+rw0KDQoNCkVtYWls77yI6KuL5aGr5a+r55W25Yid5aCx5ZCN6Zmq6LeR6KiI55Wr55qE5L+h566x
+77yJICoNCg0KDQpkYW5ueTg3MTAwNUBnbWFpbC5jb20NCg0KDQrkvaDpgbjogIPnmoTorYnnhacg
+Kg0KDQoNCkNQDQoNCg0KU0FBDQoNCg0KMS4gU3VwcG9zZSB5b3UgYXJlIGEgbmV0d29yayBlbmdp
+bmVlciBhdCBhIGxpdmUgc3RyZWFtaW5nIGNvbXBhbnksIGFuZCB5b3VyICANCmdvYWwgaXMgdG8g
+bWluaW1pemUgdGhlIGxhdGVuY3kgZm9yIHVzZXJzIHdhdGNoaW5nIGxpdmUgc3RyZWFtcy4gVG8g
+YWNoaWV2ZSAgDQp0aGlzIGdvYWwsIHdoaWNoIEFXUyBSb3V0ZSA1MyByb3V0aW5nIHBvbGljeSBz
+aG91bGQgeW91IHVzZT8gKg0KDQoNCkEuIEdlb2xvY2F0aW9uIFJvdXRpbmcNCg0KDQpCLiBMYXRl
+bmN5IFJvdXRpbmcNCg0KDQpDLiBXZWlnaHRlZCBSb3V0aW5nDQoNCg0KRC4gR2VvcHJveGltaXR5
+IFJvdXRpbmcNCg0KDQoyLiBXaGljaCBBV1Mgc2VydmljZXMgYXJlIGRlbGl2ZXJlZCBnbG9iYWxs
+eSBpbnN0ZWFkIG9mIHJlZ2lvbmFsbHk/IChDaG9vc2UgIA0KdHdvLikNCioNCg0KDQpBLiBBbWF6
+b24gRUMyDQoNCg0K4pyTDQpCLiBBbWF6b24gQ2xvdWRGcm9udA0KDQoNCkMuIEFtYXpvbiBSb3V0
+ZSA1Mw0KDQoNCuKckw0KRC4gQW1hem9uIFZQQw0KDQoNCkUuIEFtYXpvbiBSRFMNCg0KDQozLiBB
+IGNvbXBhbnkgd2FudHMgdG8gdXNlIEFtYXpvbiBFQzIgaW5zdGFuY2VzIHRvIHByb3ZpZGUgYSBz
+dGF0aWMgd2Vic2l0ZSAgDQp0byB1c2VycyBhbGwgb3ZlciB0aGUgd29ybGQuIFRoZSBjb21wYW55
+IG5lZWRzIHRvIG1pbmltaXplIGxhdGVuY3kgZm9yIHRoZSAgDQp1c2Vycy4NCldoaWNoIHNvbHV0
+aW9uIG1lZXRzIHRoZXNlIHJlcXVpcmVtZW50cz8NCioNCg0KDQpBLiBVc2UgRUMyIGluc3RhbmNl
+cyBpbiBtdWx0aXBsZSBlZGdlIGxvY2F0aW9ucy4NCg0KDQpCLiBVc2UgRUMyIGluc3RhbmNlcyBp
+biB0aGUgc2FtZSBBdmFpbGFiaWxpdHkgWm9uZSBidXQgaW4gZGlmZmVyZW50IEFXUyAgDQpSZWdp
+b25zLg0KDQoNCkMuIFVzZSBBbWF6b24gQ2xvdWRGcm9udCB3aXRoIHRoZSBFQzIgaW5zdGFuY2Vz
+IGNvbmZpZ3VyZWQgYXMgdGhlIHNvdXJjZS4NCg0KDQpELiBVc2UgRUMyIGluc3RhbmNlcyBpbiB0
+aGUgc2FtZSBBdmFpbGFiaWxpdHkgWm9uZSBidXQgaW4gZGlmZmVyZW50IEFXUyAgDQphY2NvdW50
+cy4NCg0KDQo0LiBXaGljaCBvZiB0aGUgZm9sbG93aW5nIGlzIGEgY29ycmVjdCByZWxhdGlvbnNo
+aXAgYmV0d2VlbiByZWdpb25zLCAgDQpBdmFpbGFiaWxpdHkgWm9uZXMsIGFuZCBlZGdlIGxvY2F0
+aW9ucz8NCioNCg0KDQpBLiBEYXRhIGNlbnRlcnMgY29udGFpbiByZWdpb25zLg0KDQoNCkIuIFJl
+Z2lvbnMgY29udGFpbiBBdmFpbGFiaWxpdHkgWm9uZXMuDQoNCg0KQy4gQXZhaWxhYmlsaXR5IFpv
+bmVzIGNvbnRhaW4gZWRnZSBsb2NhdGlvbnMuDQoNCg0KRC4gRWRnZSBsb2NhdGlvbnMgY29udGFp
+biByZWdpb25zLg0KDQoNCjUuIElmIGFuIEVDMiBpbnN0YW5jZSBpcyBkZXBsb3llZCBpbiBhIHBy
+aXZhdGUgc3VibmV0IGFuZCBuZWVkcyB0byBkb3dubG9hZCAgDQpjb250ZW50IGZyb20gdGhlIGlu
+dGVybmV0LCB3aGljaCBBV1Mgc2VydmljZSB3b3VsZCBhbGxvdyB0aGlzIHdpdGhvdXQgIA0KZXhw
+b3NpbmcgdGhlIGluc3RhbmNlIHRvIGRpcmVjdCBpbnRlcm5ldCBhY2Nlc3M/DQoqDQoNCg0KQS4g
+SW50ZXJuZXQgR2F0ZXdheQ0KDQoNCkIuIE5BVCBHYXRld2F5DQoNCg0KQy4gRWxhc3RpYyBMb2Fk
+IEJhbGFuY2VyDQoNCg0KRC4gQVdTIERpcmVjdCBDb25uZWN0DQoNCg0KNi4gSW4gQVdTLCB3aGlj
+aCB0eXBlIG9mIGdhdGV3YXkgc2hvdWxkIGJlIHVzZWQgaWYgYSBjb21wYW55IHdhbnRzIHRvIGFs
+bG93ICANCmluc3RhbmNlcyBpbiBhIHByaXZhdGUgc3VibmV0IHRvIGFjY2VzcyB0aGUgaW50ZXJu
+ZXQsIGJ1dCBwcmV2ZW50IHRoZSAgDQppbnRlcm5ldCBmcm9tIGluaXRpYXRpbmcgZGlyZWN0IGNv
+bm5lY3Rpb25zIHRvIHRoZXNlIGluc3RhbmNlcz8gKg0KDQoNCkEuIE5BVCBHYXRld2F5DQoNCg0K
+Qi4gSW50ZXJuZXQgR2F0ZXdheQ0KDQoNCkMuIFZQTiBHYXRld2F5DQoNCg0KRC4gVmlydHVhbCBQ
+cml2YXRlIEdhdGV3YXkNCg0KDQo3LiBDb25zaWRlciBhbiBBV1MgZW52aXJvbm1lbnQgd2hlcmUg
+YSBjb21wYW55IGhhcyBFQzIgaW5zdGFuY2VzIGRlcGxveWVkICANCmluIGJvdGggcHVibGljIGFu
+ZCBwcml2YXRlIHN1Ym5ldHMuIFRoZXkgbmVlZCB0byBjb25maWd1cmUgYWNjZXNzIHNvIHRoYXQg
+IA0KaW5zdGFuY2VzIGluIHRoZSBwdWJsaWMgc3VibmV0IGNhbiByZWNlaXZlIGFuZCBzZW5kIGlu
+dGVybmV0IHRyYWZmaWMgIA0KZGlyZWN0bHksIHdoaWxlIGluc3RhbmNlcyBpbiB0aGUgcHJpdmF0
+ZSBzdWJuZXQgY2FuIGFjY2VzcyB0aGUgaW50ZXJuZXQgZm9yICANCnVwZGF0ZXMgd2l0aG91dCBi
+ZWluZyBkaXJlY3RseSBhY2Nlc3NpYmxlIGZyb20gdGhlIGludGVybmV0LiBXaGljaCB0d28gIA0K
+c2VydmljZXMgc2hvdWxkIHRoZXkgdXNlPyAoQ2hvb3NlIHR3bykgKg0KDQoNCkEuIE5BVCBHYXRl
+d2F5DQoNCg0K4pyTDQpCLiBJbnRlcm5ldCBHYXRld2F5DQoNCg0KQy4gVlBOIEdhdGV3YXkNCg0K
+DQpELiBWaXJ0dWFsIFByaXZhdGUgR2F0ZXdheQ0KDQoNCuKckw0KRS4gRWxhc3RpYyBMb2FkIEJh
+bGFuY2VyDQoNCg0KOC4gQSBjb21wYW55IGlzIGRlc2lnbmluZyBhIHdlYiBhcHBsaWNhdGlvbiB0
+aGF0IHdpbGwgcnVuIG9uIEFtYXpvbiBFQzIgIA0KaW5zdGFuY2VzLg0KDQpXaGljaCBBV1Mgc2Vy
+dmljZXMgYW5kIGZlYXR1cmVzIHdpbGwgaW1wcm92ZSBhdmFpbGFiaWxpdHkgYW5kIHJlZHVjZSB0
+aGUgIA0KaW1wYWN0IG9mIGZhaWx1cmVzIGZvciB0aGlzIGFwcGxpY2F0aW9uPyAoQ2hvb3NlIHR3
+by4pICoNCg0KDQrinJMNCkEuIEFtYXpvbiBFQzIgQXV0byBTY2FsaW5nIGZvciB0aGUgRUMyIGlu
+c3RhbmNlcw0KDQoNCkIuIFZQQyBzdWJuZXQgQUNMcyB0byBjaGVjayB0aGUgaGVhbHRoIG9mIGEg
+c2VydmljZQ0KDQoNCkMuIFJlc291cmNlcyB0aGF0IGFyZSBkaXN0cmlidXRlZCBhY3Jvc3MgbXVs
+dGlwbGUgQXZhaWxhYmlsaXR5IFpvbmVzDQoNCg0K4pyTDQpELiBDb25maWd1cmF0aW9uIG9mIEFX
+UyBTZXJ2ZXIgTWlncmF0aW9uIFNlcnZpY2UgKEFXUyBTTVMpIHRvIG1vdmUgdGhlIEVDMiAgDQpp
+bnN0YW5jZXMgdG8gYSBkaWZmZXJlbnQgQVdTIFJlZ2lvbg0KDQoNCkUuIFJlc291cmNlcyB0aGF0
+IGFyZSBkaXN0cmlidXRlZCBhY3Jvc3MgbXVsdGlwbGUgQVdTIHBvaW50cyBvZiBwcmVzZW5jZQ0K
+DQoNCjkuIFdoaWNoIEFXUyBzZXJ2aWNlIGNhbiBiZSB1c2VkIHRvIHNldCB1cCBhIGZpcmV3YWxs
+IHRvIGNvbnRyb2wgdHJhZmZpYyAgDQpnb2luZyBpbnRvIGFuZCBjb21pbmcgb3V0IG9mIGFuIEFt
+YXpvbiBWUEMgc3VibmV0PyAoQ2hvb3NlIHR3by4pDQoNCg0K4pyTDQpBLiBBV1MgRmlyZXdhbGwg
+TWFuYWdlcg0KDQoNCuKckw0KQi4gU2VjdXJpdHkgZ3JvdXANCg0KDQpDLiBOZXR3b3JrIEFDTA0K
+DQoNCkQuIEFXUyBXQUYNCg0KDQoxMC4gSW4gdGhlIGNvbnRleHQgb2YgdXRpbGl6aW5nIEFtYXpv
+biBXZWIgU2VydmljZXMgZm9yIGFwcGxpY2F0aW9uICANCmRldmVsb3BtZW50LCB2YXJpb3VzIGlu
+dGVyZmFjZXMgZmFjaWxpdGF0ZSBpbnRlcmFjdGlvbnMgd2l0aCBBV1MgcmVzb3VyY2VzLiAgDQpX
+aGljaCBvZiB0aGUgZm9sbG93aW5nIG1ldGhvZHMgYXJlIHZhbGlkIGZvciBkZXZlbG9wZXJzIHRv
+IGNvbW11bmljYXRlIHdpdGggIA0KQVdTPyAoQ2hvb3NlIHRocmVlLikgKg0KDQoNCuKckw0KQ29u
+c29sZQ0KDQoNCuKckw0KQ29tbWFuZCBMaW5lIEludGVyZmFjZSAoQ0xJKQ0KDQoNClRoaXJkLXBh
+cnR5IG1hbmFnZW1lbnQgdG9vbHMgdGhhdCB1dGlsaXplIEFXUyBBUElzDQoNCg0K4pyTDQpTb2Z0
+d2FyZSBEZXZlbG9wbWVudCBLaXRzIChTREtzKQ0KDQoNCuW7uueri+iHquW3seeahCBHb29nbGUg
+6KGo5ZauDQoNCuaqouiIiea/q+eUqOaDheW9og0KDQoNCg==
+--000000000000c8991d06184194ba
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html><head><style nonce=3D"1Uz0_EXPz4XAcoAk3rTmVQ">@import url(https://fon=
+ts.googleapis.com/css?family=3DGoogle+Sans:400,500|Roboto:300,400,400i,500,=
+700&subset=3Dlatin,vietnamese,latin-ext,cyrillic,greek,cyrillic-ext,greek-e=
+xt);</style><style nonce=3D"1Uz0_EXPz4XAcoAk3rTmVQ">[class=3D"x_body-conten=
+t-wrapper"] * {white-space: normal !important;}</style></head><body dir=3D"=
+ltr" style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif=
+;font-size: 14px; font-weight: 400; line-height: 20px;text-align: start; wo=
+rd-wrap: break-word; margin: 0; padding: 0; height: 100%; width: 100%;"><ta=
+ble border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"background-co=
+lor:rgb(255,152,0);" width=3D"100%" role=3D"presentation"><tbody><tr height=
+=3D"64px"><td style=3D"padding: 0 24px;"><img alt=3D"Google =E8=A1=A8=E5=96=
+=AE" height=3D"26px" style=3D"display: inline-block; margin: 0; vertical-al=
+ign: middle;" width=3D"143px" src=3D"https://www.gstatic.com/docs/forms/goo=
+gle_forms_logo_lockup_black_2x.png"></td></tr></tbody></table><div class=3D=
+"body-content-wrapper" style=3D"padding: 12px; background-color: rgb(255,24=
+0,217);"><div style=3D"margin: 0 auto; max-width: 640px; min-width: 154px;"=
+><div style=3D"border: 1px solid #dadce0; padding: 20px 12px;background-col=
+or: #fff; border-radius: 8px; margin-bottom: 12px;padding: 20px;"><h1 style=
+=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-size=
+: 20px; font-weight: 400; line-height: 28px;margin: 0 0 12px;">=E6=84=9F=E8=
+=AC=9D=E6=82=A8=E5=A1=AB=E5=AF=AB=E3=80=8C<a href=3D"https://docs.google.co=
+m/forms/d/e/1FAIpQLSdD_iJnfpu-7P8VH8LR99pM-aSHK4fgXtZTKWdwHrlKMECUqQ/viewfo=
+rm?usp=3Dmail_form_link" target=3D"_blank" style=3D"white-space: pre-wrap;"=
+>AWS Educate =E8=AD=89=E7=85=A7=E9=99=AA=E8=B7=91=E8=A8=88=E7=95=AB - 5/10 =
+=E8=AD=89=E7=85=A7=E9=80=B2=E5=BA=A6=E8=AA=B2=E7=A8=8B=EF=BC=88=E4=B8=80=EF=
+=BC=89=E5=B0=8F=E8=80=83</a>=E3=80=8D</h1>=E4=BB=A5=E4=B8=8B=E6=98=AF=E6=88=
+=91=E5=80=91=E6=94=B6=E5=88=B0=E7=9A=84=E5=9B=9E=E8=A6=86=E3=80=82<div styl=
+e=3D"margin-top: 16px;"><div style=3D"margin-top: 24px"><a href=3D"https://=
+docs.google.com/forms/u/0/d/e/1FAIpQLSdD_iJnfpu-7P8VH8LR99pM-aSHK4fgXtZTKWd=
+wHrlKMECUqQ/viewscore?viewscore=3DAE0zAgAHSqAnqu1T133bzwUeZxW-jeHqyD30jqN2b=
+cDb2WC3FISB4FiGjoJTbSR58spKxuI" target=3D"_blank" style=3D"border-radius: 4=
+px;font-family: &#39;Google Sans&#39;,Roboto,Helvetica,Arial,sans-serif;fon=
+t-size: 14px; font-weight: 500; padding: 8px 24px; text-align: center; text=
+-decoration: none;background-color: rgb(255,152,0); color: #fff;">=E6=9F=A5=
+=E7=9C=8B=E5=88=86=E6=95=B8</a></div><div itemprop=3D"action" itemscope ite=
+mtype=3D"http://schema.org/ViewAction"><meta itemprop=3D"url" content=3D"ht=
+tps://docs.google.com/forms/u/0/d/e/1FAIpQLSdD_iJnfpu-7P8VH8LR99pM-aSHK4fgX=
+tZTKWdwHrlKMECUqQ/viewscore?viewscore=3DAE0zAgAHSqAnqu1T133bzwUeZxW-jeHqyD3=
+0jqN2bcDb2WC3FISB4FiGjoJTbSR58spKxuI"><meta itemprop=3D"name" content=3D"=
+=E6=9F=A5=E7=9C=8B=E6=82=A8=E7=9A=84=E5=88=86=E6=95=B8"></div></div></div><=
+div style=3D"border-bottom: 1px solid #dadce0; border-left: 1px solid #dadc=
+e0; border-right: 1px solid #dadce0; border-top: 8px solid rgb(255,152,0); =
+padding: 20px;background-color: #fff; border-radius: 8px; margin-bottom: 12=
+px;"><h1 dir=3D"ltr" style=3D"font-family: Roboto,Helvetica,Arial,sans-seri=
+f;font-size: 32px; font-weight: 400; line-height: 42px;white-space: pre-wra=
+p;margin: 0 0 12px;">AWS Educate =E8=AD=89=E7=85=A7=E9=99=AA=E8=B7=91=E8=A8=
+=88=E7=95=AB - 5/10 =E8=AD=89=E7=85=A7=E9=80=B2=E5=BA=A6=E8=AA=B2=E7=A8=8B=
+=EF=BC=88=E4=B8=80=EF=BC=89=E5=B0=8F=E8=80=83</h1><div style=3D"white-space=
+: pre-wrap;margin-bottom: 12px;">=E2=9A=A0=EF=B8=8F=E5=A4=A7=E5=AE=B6=E8=A6=
+=81=E4=B9=96=E4=B9=96=E5=AE=8C=E6=88=90=E5=B0=8F=E8=80=83=E4=B8=A6=E4=B8=94=
+=E5=9C=A8<b>=E8=AD=89=E7=85=A7=E8=AA=B2=E7=A8=8B=E7=B5=90=E6=9D=9F=E5=BE=8C=
+=E5=85=A9=E5=A4=A9=E5=85=A7</b>=E5=AE=8C=E6=88=90=E5=96=94=EF=BC=81<div><di=
+v>=E2=9A=A0=EF=B8=8F<b>=E9=87=8D=E8=A6=81=E6=8F=90=E9=86=92 =EF=BC=9A=E5=8F=
+=AA=E6=9C=89=E5=AE=8C=E6=88=90=E5=B0=8F=E8=80=83=E7=9A=84=E5=90=8C=E5=AD=B8=
+=E6=89=8D=E6=9C=89=E8=B3=87=E6=A0=BC=E5=A0=B1=E5=90=8D=E5=BE=8C=E7=BA=8C=E7=
+=9A=84=E8=AC=9B=E5=BA=A7=E8=AA=B2=E7=A8=8B=E5=96=94=EF=BC=81</b><br><div><u=
+l><li><b>=E5=B0=8F=E8=80=83=E7=AF=84=E5=9C=8D=EF=BC=9A</b><span>Ch3 AWS =E5=
+=85=A8=E7=90=83=E5=9F=BA=E7=A4=8E=E8=A8=AD=E6=96=BD=EF=BC=86=E5=8F=AF=E9=9D=
+=A0=E6=80=A7=E3=80=81Ch4 =E9=80=A3=E7=B6=B2</span></li><li><b>=E9=A1=8C=E6=
+=95=B8=EF=BC=9A</b>10=E9=A1=8C</li><li><span><b>=E5=AE=8C=E6=88=90=E6=99=82=
+=E9=96=93=EF=BC=9A5/10~5/12 24:00 =E5=89=8D=E5=AE=8C=E6=88=90</b></span></l=
+i></ul></div></div></div></div><div dir=3D"ltr">=E7=B3=BB=E7=B5=B1=E5=B7=B2=
+=E5=9C=A8=E4=BD=A0=E6=8F=90=E4=BA=A4=E9=80=99=E4=BB=BD=E8=A1=A8=E5=96=AE=E6=
+=99=82=E8=A8=98=E9=8C=84=E4=BD=A0=E7=9A=84=E9=9B=BB=E5=AD=90=E9=83=B5=E4=BB=
+=B6=E5=9C=B0=E5=9D=80 (<b>danny871005@gmail.com</b>)=E3=80=82</div></div><d=
+iv style=3D"border: 1px solid #dadce0; padding: 20px 12px;background-color:=
+ #fff; border-radius: 8px; margin-bottom: 12px;margin-bottom: 12px;"><div s=
+tyle=3D"padding: 0 12px;"><h2 dir=3D"auto" style=3D"color: #202124;font-fam=
+ily: Roboto,Helvetica,Arial,sans-serif;font-size: 16px; font-weight: 400; l=
+ine-height: 24px;white-space: pre-wrap;margin: 0 0 16px;">=E5=A7=93=E5=90=
+=8D<span style=3D"color: #d93025;" aria-label=3D"=E5=B0=87=E9=80=99=E5=80=
+=8B=E5=95=8F=E9=A1=8C=E8=A8=AD=E7=82=BA=E5=BF=85=E5=A1=AB"> *</span></h2></=
+div><div style=3D"padding: 0 12px;"><div style=3D"width: 100%;"><div dir=3D=
+"auto" style=3D"white-space: pre-wrap;border-bottom: 1px dotted rgba(0,0,0,=
+0.38);margin: 12px 0 8px; min-height: 20px;display: inline-block; max-width=
+: 100%; min-width: 50%;">=E6=9D=8E=E5=B1=95=E7=B7=AF</div></div></div></div=
+><div style=3D"border: 1px solid #dadce0; padding: 20px 12px;background-col=
+or: #fff; border-radius: 8px; margin-bottom: 12px;margin-bottom: 12px;"><di=
+v style=3D"padding: 0 12px;"><h2 dir=3D"auto" style=3D"color: #202124;font-=
+family: Roboto,Helvetica,Arial,sans-serif;font-size: 16px; font-weight: 400=
+; line-height: 24px;white-space: pre-wrap;margin: 0 0 16px;">Email=EF=BC=88=
+=E8=AB=8B=E5=A1=AB=E5=AF=AB=E7=95=B6=E5=88=9D=E5=A0=B1=E5=90=8D=E9=99=AA=E8=
+=B7=91=E8=A8=88=E7=95=AB=E7=9A=84=E4=BF=A1=E7=AE=B1=EF=BC=89<span style=3D"=
+color: #d93025;" aria-label=3D"=E5=B0=87=E9=80=99=E5=80=8B=E5=95=8F=E9=A1=
+=8C=E8=A8=AD=E7=82=BA=E5=BF=85=E5=A1=AB"> *</span></h2></div><div style=3D"=
+padding: 0 12px;"><div style=3D"width: 100%;"><div dir=3D"auto" style=3D"wh=
+ite-space: pre-wrap;border-bottom: 1px dotted rgba(0,0,0,0.38);margin: 12px=
+ 0 8px; min-height: 20px;display: inline-block; max-width: 100%; min-width:=
+ 50%;">danny871005@gmail.com</div></div></div></div><div style=3D"border: 1=
+px solid #dadce0; padding: 20px 12px;background-color: #fff; border-radius:=
+ 8px; margin-bottom: 12px;margin-bottom: 12px;"><div style=3D"padding: 0 12=
+px;"><h2 dir=3D"auto" style=3D"color: #202124;font-family: Roboto,Helvetica=
+,Arial,sans-serif;font-size: 16px; font-weight: 400; line-height: 24px;whit=
+e-space: pre-wrap;margin: 0 0 16px;">=E4=BD=A0=E9=81=B8=E8=80=83=E7=9A=84=
+=E8=AD=89=E7=85=A7<span style=3D"color: #d93025;" aria-label=3D"=E5=B0=87=
+=E9=80=99=E5=80=8B=E5=95=8F=E9=A1=8C=E8=A8=AD=E7=82=BA=E5=BF=85=E5=A1=AB"> =
+*</span></h2></div><div style=3D"padding: 0 12px;"><div style=3D"margin-top=
+: 16px;"><table style=3D"color: #202124;font-family: Roboto,Helvetica,Arial=
+,sans-serif;font-size: 14px; font-weight: 400; line-height: 20px;margin-top=
+: 8px; table-layout: fixed;"><tr><td><div role=3D"radio" aria-checked=3D"tr=
+ue" aria-label=3D"CP" style=3D"border: solid 2px #5f6368; height: 16px; wid=
+th: 16px; border-radius: 50%;"><div style=3D"background-color: #5f6368; bor=
+der: solid 5px #5f6368; border-radius: 50%; margin: 3px; height: 0; width: =
+0;"></div></div></td><td style=3D"min-width: 8px;"></td><td style=3D"word-b=
+reak: break-word;">CP</td></tr></table></div><div style=3D"margin-top: 16px=
+;"><table style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-=
+serif;font-size: 14px; font-weight: 400; line-height: 20px;color: #70757a;m=
+argin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"radio" aria-chec=
+ked=3D"false" aria-label=3D"SAA" style=3D"border: solid 2px #9aa0a6; height=
+: 16px; width: 16px; border-radius: 50%;"></div></td><td style=3D"min-width=
+: 8px;"></td><td style=3D"word-break: break-word;">SAA</td></tr></table></d=
+iv></div></div><div style=3D"border: 1px solid #dadce0; padding: 20px 12px;=
+background-color: #fff; border-radius: 8px; margin-bottom: 12px;margin-bott=
+om: 12px;"><div style=3D"padding: 0 12px;"><h2 dir=3D"auto" style=3D"color:=
+ #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 16px; fo=
+nt-weight: 400; line-height: 24px;white-space: pre-wrap;margin: 0 0 16px;">=
+<span>1. Suppose you are a network engineer at a live streaming company, an=
+d your goal is to minimize the latency for users watching live streams. To =
+achieve this goal, which AWS Route 53 routing policy should you use?</span>=
+<span style=3D"color: #d93025;" aria-label=3D"=E5=B0=87=E9=80=99=E5=80=8B=
+=E5=95=8F=E9=A1=8C=E8=A8=AD=E7=82=BA=E5=BF=85=E5=A1=AB"> *</span></h2></div=
+><div style=3D"padding: 0 12px;"><div style=3D"margin-top: 16px;"><table st=
+yle=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-s=
+ize: 14px; font-weight: 400; line-height: 20px;color: #70757a;margin-top: 8=
+px; table-layout: fixed;"><tr><td><div role=3D"radio" aria-checked=3D"false=
+" aria-label=3D"A. Geolocation Routing" style=3D"border: solid 2px #9aa0a6;=
+ height: 16px; width: 16px; border-radius: 50%;"></div></td><td style=3D"mi=
+n-width: 8px;"></td><td style=3D"word-break: break-word;">A. Geolocation Ro=
+uting</td></tr></table></div><div style=3D"margin-top: 16px;"><table style=
+=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-size=
+: 14px; font-weight: 400; line-height: 20px;margin-top: 8px; table-layout: =
+fixed;"><tr><td><div role=3D"radio" aria-checked=3D"true" aria-label=3D"B. =
+Latency Routing" style=3D"border: solid 2px #5f6368; height: 16px; width: 1=
+6px; border-radius: 50%;"><div style=3D"background-color: #5f6368; border: =
+solid 5px #5f6368; border-radius: 50%; margin: 3px; height: 0; width: 0;"><=
+/div></div></td><td style=3D"min-width: 8px;"></td><td style=3D"word-break:=
+ break-word;">B. Latency Routing</td></tr></table></div><div style=3D"margi=
+n-top: 16px;"><table style=3D"color: #202124;font-family: Roboto,Helvetica,=
+Arial,sans-serif;font-size: 14px; font-weight: 400; line-height: 20px;color=
+: #70757a;margin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"radio=
+" aria-checked=3D"false" aria-label=3D"C. Weighted Routing" style=3D"border=
+: solid 2px #9aa0a6; height: 16px; width: 16px; border-radius: 50%;"></div>=
+</td><td style=3D"min-width: 8px;"></td><td style=3D"word-break: break-word=
+;">C. Weighted Routing</td></tr></table></div><div style=3D"margin-top: 16p=
+x;"><table style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans=
+-serif;font-size: 14px; font-weight: 400; line-height: 20px;color: #70757a;=
+margin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"radio" aria-che=
+cked=3D"false" aria-label=3D"D. Geoproximity Routing" style=3D"border: soli=
+d 2px #9aa0a6; height: 16px; width: 16px; border-radius: 50%;"></div></td><=
+td style=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;">D. =
+Geoproximity Routing</td></tr></table></div></div></div><div style=3D"borde=
+r: 1px solid #dadce0; padding: 20px 12px;background-color: #fff; border-rad=
+ius: 8px; margin-bottom: 12px;margin-bottom: 12px;"><div style=3D"padding: =
+0 12px;"><h2 dir=3D"auto" style=3D"color: #202124;font-family: Roboto,Helve=
+tica,Arial,sans-serif;font-size: 16px; font-weight: 400; line-height: 24px;=
+white-space: pre-wrap;margin: 0 0 16px;"><p>2. Which AWS services are deliv=
+ered globally instead of regionally? (Choose two.)</p><span style=3D"color:=
+ #d93025;" aria-label=3D"=E5=B0=87=E9=80=99=E5=80=8B=E5=95=8F=E9=A1=8C=E8=
+=A8=AD=E7=82=BA=E5=BF=85=E5=A1=AB"> *</span></h2></div><div style=3D"paddin=
+g: 0 12px;"><div style=3D"margin-top: 16px;"><table style=3D"color: #202124=
+;font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 14px; font-weigh=
+t: 400; line-height: 20px;color: #70757a;margin-top: 8px; table-layout: fix=
+ed;"><tr><td><div role=3D"checkbox" aria-checked=3D"false" aria-label=3D"A.=
+ Amazon EC2" style=3D"border: solid 2px #9aa0a6; border-radius: 3px; height=
+: 16px; width: 16px;"></div></td><td style=3D"min-width: 8px;"></td><td sty=
+le=3D"word-break: break-word;">A. Amazon EC2</td></tr></table></div><div st=
+yle=3D"margin-top: 16px;"><table style=3D"color: #202124;font-family: Robot=
+o,Helvetica,Arial,sans-serif;font-size: 14px; font-weight: 400; line-height=
+: 20px;margin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"checkbox=
+" aria-checked=3D"true" aria-label=3D"B. Amazon CloudFront" style=3D"border=
+: solid 2px #5f6368; border-radius: 3px; height: 16px; width: 16px;backgrou=
+nd-color: #5f6368; color: #fff; font-size: 14px; line-height: 16px; text-al=
+ign: center;">&#10003;</div></td><td style=3D"min-width: 8px;"></td><td sty=
+le=3D"word-break: break-word;">B. Amazon CloudFront</td></tr></table></div>=
+<div style=3D"margin-top: 16px;"><table style=3D"color: #202124;font-family=
+: Roboto,Helvetica,Arial,sans-serif;font-size: 14px; font-weight: 400; line=
+-height: 20px;color: #70757a;margin-top: 8px; table-layout: fixed;"><tr><td=
+><div role=3D"checkbox" aria-checked=3D"false" aria-label=3D"C. Amazon Rout=
+e 53" style=3D"border: solid 2px #9aa0a6; border-radius: 3px; height: 16px;=
+ width: 16px;"></div></td><td style=3D"min-width: 8px;"></td><td style=3D"w=
+ord-break: break-word;">C. Amazon Route 53</td></tr></table></div><div styl=
+e=3D"margin-top: 16px;"><table style=3D"color: #202124;font-family: Roboto,=
+Helvetica,Arial,sans-serif;font-size: 14px; font-weight: 400; line-height: =
+20px;margin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"checkbox" =
+aria-checked=3D"true" aria-label=3D"D. Amazon VPC" style=3D"border: solid 2=
+px #5f6368; border-radius: 3px; height: 16px; width: 16px;background-color:=
+ #5f6368; color: #fff; font-size: 14px; line-height: 16px; text-align: cent=
+er;">&#10003;</div></td><td style=3D"min-width: 8px;"></td><td style=3D"wor=
+d-break: break-word;">D. Amazon VPC</td></tr></table></div><div style=3D"ma=
+rgin-top: 16px;"><table style=3D"color: #202124;font-family: Roboto,Helveti=
+ca,Arial,sans-serif;font-size: 14px; font-weight: 400; line-height: 20px;co=
+lor: #70757a;margin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"ch=
+eckbox" aria-checked=3D"false" aria-label=3D"E. Amazon RDS" style=3D"border=
+: solid 2px #9aa0a6; border-radius: 3px; height: 16px; width: 16px;"></div>=
+</td><td style=3D"min-width: 8px;"></td><td style=3D"word-break: break-word=
+;">E. Amazon RDS</td></tr></table></div></div></div><div style=3D"border: 1=
+px solid #dadce0; padding: 20px 12px;background-color: #fff; border-radius:=
+ 8px; margin-bottom: 12px;margin-bottom: 12px;"><div style=3D"padding: 0 12=
+px;"><h2 dir=3D"auto" style=3D"color: #202124;font-family: Roboto,Helvetica=
+,Arial,sans-serif;font-size: 16px; font-weight: 400; line-height: 24px;whit=
+e-space: pre-wrap;margin: 0 0 16px;"><span>3. A company wants to use Amazon=
+ EC2 instances to provide a static website to users all over the world. The=
+ company needs to minimize latency for the users.</span><p>Which solution m=
+eets these requirements?</p><span style=3D"color: #d93025;" aria-label=3D"=
+=E5=B0=87=E9=80=99=E5=80=8B=E5=95=8F=E9=A1=8C=E8=A8=AD=E7=82=BA=E5=BF=85=E5=
+=A1=AB"> *</span></h2></div><div style=3D"padding: 0 12px;"><div style=3D"m=
+argin-top: 16px;"><table style=3D"color: #202124;font-family: Roboto,Helvet=
+ica,Arial,sans-serif;font-size: 14px; font-weight: 400; line-height: 20px;c=
+olor: #70757a;margin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"r=
+adio" aria-checked=3D"false" aria-label=3D"A. Use EC2 instances in multiple=
+ edge locations." style=3D"border: solid 2px #9aa0a6; height: 16px; width: =
+16px; border-radius: 50%;"></div></td><td style=3D"min-width: 8px;"></td><t=
+d style=3D"word-break: break-word;">A. Use EC2 instances in multiple edge l=
+ocations.</td></tr></table></div><div style=3D"margin-top: 16px;"><table st=
+yle=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-s=
+ize: 14px; font-weight: 400; line-height: 20px;color: #70757a;margin-top: 8=
+px; table-layout: fixed;"><tr><td><div role=3D"radio" aria-checked=3D"false=
+" aria-label=3D"B. Use EC2 instances in the same Availability Zone but in d=
+ifferent AWS Regions." style=3D"border: solid 2px #9aa0a6; height: 16px; wi=
+dth: 16px; border-radius: 50%;"></div></td><td style=3D"min-width: 8px;"></=
+td><td style=3D"word-break: break-word;">B. Use EC2 instances in the same A=
+vailability Zone but in different AWS Regions.</td></tr></table></div><div =
+style=3D"margin-top: 16px;"><table style=3D"color: #202124;font-family: Rob=
+oto,Helvetica,Arial,sans-serif;font-size: 14px; font-weight: 400; line-heig=
+ht: 20px;margin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"radio"=
+ aria-checked=3D"true" aria-label=3D"C. Use Amazon CloudFront with the EC2 =
+instances configured as the source." style=3D"border: solid 2px #5f6368; he=
+ight: 16px; width: 16px; border-radius: 50%;"><div style=3D"background-colo=
+r: #5f6368; border: solid 5px #5f6368; border-radius: 50%; margin: 3px; hei=
+ght: 0; width: 0;"></div></div></td><td style=3D"min-width: 8px;"></td><td =
+style=3D"word-break: break-word;">C. Use Amazon CloudFront with the EC2 ins=
+tances configured as the source.</td></tr></table></div><div style=3D"margi=
+n-top: 16px;"><table style=3D"color: #202124;font-family: Roboto,Helvetica,=
+Arial,sans-serif;font-size: 14px; font-weight: 400; line-height: 20px;color=
+: #70757a;margin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"radio=
+" aria-checked=3D"false" aria-label=3D"D. Use EC2 instances in the same Ava=
+ilability Zone but in different AWS accounts." style=3D"border: solid 2px #=
+9aa0a6; height: 16px; width: 16px; border-radius: 50%;"></div></td><td styl=
+e=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;">D. Use EC2=
+ instances in the same Availability Zone but in different AWS accounts.</td=
+></tr></table></div></div></div><div style=3D"border: 1px solid #dadce0; pa=
+dding: 20px 12px;background-color: #fff; border-radius: 8px; margin-bottom:=
+ 12px;margin-bottom: 12px;"><div style=3D"padding: 0 12px;"><h2 dir=3D"auto=
+" style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;fo=
+nt-size: 16px; font-weight: 400; line-height: 24px;white-space: pre-wrap;ma=
+rgin: 0 0 16px;"><p>4. Which of the following is a correct relationship bet=
+ween regions, Availability Zones, and edge locations?</p><span style=3D"col=
+or: #d93025;" aria-label=3D"=E5=B0=87=E9=80=99=E5=80=8B=E5=95=8F=E9=A1=8C=
+=E8=A8=AD=E7=82=BA=E5=BF=85=E5=A1=AB"> *</span></h2></div><div style=3D"pad=
+ding: 0 12px;"><div style=3D"margin-top: 16px;"><table style=3D"color: #202=
+124;font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 14px; font-we=
+ight: 400; line-height: 20px;color: #70757a;margin-top: 8px; table-layout: =
+fixed;"><tr><td><div role=3D"radio" aria-checked=3D"false" aria-label=3D"A.=
+ Data centers contain regions." style=3D"border: solid 2px #9aa0a6; height:=
+ 16px; width: 16px; border-radius: 50%;"></div></td><td style=3D"min-width:=
+ 8px;"></td><td style=3D"word-break: break-word;">A. Data centers contain r=
+egions.</td></tr></table></div><div style=3D"margin-top: 16px;"><table styl=
+e=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-siz=
+e: 14px; font-weight: 400; line-height: 20px;margin-top: 8px; table-layout:=
+ fixed;"><tr><td><div role=3D"radio" aria-checked=3D"true" aria-label=3D"B.=
+ Regions contain Availability Zones." style=3D"border: solid 2px #5f6368; h=
+eight: 16px; width: 16px; border-radius: 50%;"><div style=3D"background-col=
+or: #5f6368; border: solid 5px #5f6368; border-radius: 50%; margin: 3px; he=
+ight: 0; width: 0;"></div></div></td><td style=3D"min-width: 8px;"></td><td=
+ style=3D"word-break: break-word;">B. Regions contain Availability Zones.</=
+td></tr></table></div><div style=3D"margin-top: 16px;"><table style=3D"colo=
+r: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 14px; =
+font-weight: 400; line-height: 20px;color: #70757a;margin-top: 8px; table-l=
+ayout: fixed;"><tr><td><div role=3D"radio" aria-checked=3D"false" aria-labe=
+l=3D"C. Availability Zones contain edge locations." style=3D"border: solid =
+2px #9aa0a6; height: 16px; width: 16px; border-radius: 50%;"></div></td><td=
+ style=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;">C. Av=
+ailability Zones contain edge locations.</td></tr></table></div><div style=
+=3D"margin-top: 16px;"><table style=3D"color: #202124;font-family: Roboto,H=
+elvetica,Arial,sans-serif;font-size: 14px; font-weight: 400; line-height: 2=
+0px;color: #70757a;margin-top: 8px; table-layout: fixed;"><tr><td><div role=
+=3D"radio" aria-checked=3D"false" aria-label=3D"D. Edge locations contain r=
+egions." style=3D"border: solid 2px #9aa0a6; height: 16px; width: 16px; bor=
+der-radius: 50%;"></div></td><td style=3D"min-width: 8px;"></td><td style=
+=3D"word-break: break-word;">D. Edge locations contain regions.</td></tr></=
+table></div></div></div><div style=3D"border: 1px solid #dadce0; padding: 2=
+0px 12px;background-color: #fff; border-radius: 8px; margin-bottom: 12px;ma=
+rgin-bottom: 12px;"><div style=3D"padding: 0 12px;"><h2 dir=3D"auto" style=
+=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-size=
+: 16px; font-weight: 400; line-height: 24px;white-space: pre-wrap;margin: 0=
+ 0 16px;">5.=C2=A0<span>If an EC2 instance is deployed in a private subnet =
+and needs to download content from the internet, which AWS service would al=
+low this without exposing the instance to direct internet access?</span><br=
+><span style=3D"color: #d93025;" aria-label=3D"=E5=B0=87=E9=80=99=E5=80=8B=
+=E5=95=8F=E9=A1=8C=E8=A8=AD=E7=82=BA=E5=BF=85=E5=A1=AB"> *</span></h2></div=
+><div style=3D"padding: 0 12px;"><div style=3D"margin-top: 16px;"><table st=
+yle=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-s=
+ize: 14px; font-weight: 400; line-height: 20px;color: #70757a;margin-top: 8=
+px; table-layout: fixed;"><tr><td><div role=3D"radio" aria-checked=3D"false=
+" aria-label=3D"A. Internet Gateway" style=3D"border: solid 2px #9aa0a6; he=
+ight: 16px; width: 16px; border-radius: 50%;"></div></td><td style=3D"min-w=
+idth: 8px;"></td><td style=3D"word-break: break-word;">A. Internet Gateway<=
+/td></tr></table></div><div style=3D"margin-top: 16px;"><table style=3D"col=
+or: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 14px;=
+ font-weight: 400; line-height: 20px;margin-top: 8px; table-layout: fixed;"=
+><tr><td><div role=3D"radio" aria-checked=3D"true" aria-label=3D"B. NAT Gat=
+eway" style=3D"border: solid 2px #5f6368; height: 16px; width: 16px; border=
+-radius: 50%;"><div style=3D"background-color: #5f6368; border: solid 5px #=
+5f6368; border-radius: 50%; margin: 3px; height: 0; width: 0;"></div></div>=
+</td><td style=3D"min-width: 8px;"></td><td style=3D"word-break: break-word=
+;">B. NAT Gateway</td></tr></table></div><div style=3D"margin-top: 16px;"><=
+table style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-seri=
+f;font-size: 14px; font-weight: 400; line-height: 20px;color: #70757a;margi=
+n-top: 8px; table-layout: fixed;"><tr><td><div role=3D"radio" aria-checked=
+=3D"false" aria-label=3D"C. Elastic Load Balancer" style=3D"border: solid 2=
+px #9aa0a6; height: 16px; width: 16px; border-radius: 50%;"></div></td><td =
+style=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;">C. Ela=
+stic Load Balancer</td></tr></table></div><div style=3D"margin-top: 16px;">=
+<table style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-ser=
+if;font-size: 14px; font-weight: 400; line-height: 20px;color: #70757a;marg=
+in-top: 8px; table-layout: fixed;"><tr><td><div role=3D"radio" aria-checked=
+=3D"false" aria-label=3D"D. AWS Direct Connect" style=3D"border: solid 2px =
+#9aa0a6; height: 16px; width: 16px; border-radius: 50%;"></div></td><td sty=
+le=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;">D. AWS Di=
+rect Connect</td></tr></table></div></div></div><div style=3D"border: 1px s=
+olid #dadce0; padding: 20px 12px;background-color: #fff; border-radius: 8px=
+; margin-bottom: 12px;margin-bottom: 12px;"><div style=3D"padding: 0 12px;"=
+><h2 dir=3D"auto" style=3D"color: #202124;font-family: Roboto,Helvetica,Ari=
+al,sans-serif;font-size: 16px; font-weight: 400; line-height: 24px;white-sp=
+ace: pre-wrap;margin: 0 0 16px;">6.=C2=A0<span>In AWS, which type of gatewa=
+y should be used if a company wants to allow instances in a private subnet =
+to access the internet, but prevent the internet from initiating direct con=
+nections to these instances?</span><span style=3D"color: #d93025;" aria-lab=
+el=3D"=E5=B0=87=E9=80=99=E5=80=8B=E5=95=8F=E9=A1=8C=E8=A8=AD=E7=82=BA=E5=BF=
+=85=E5=A1=AB"> *</span></h2></div><div style=3D"padding: 0 12px;"><div styl=
+e=3D"margin-top: 16px;"><table style=3D"color: #202124;font-family: Roboto,=
+Helvetica,Arial,sans-serif;font-size: 14px; font-weight: 400; line-height: =
+20px;color: #70757a;margin-top: 8px; table-layout: fixed;"><tr><td><div rol=
+e=3D"radio" aria-checked=3D"false" aria-label=3D"A. NAT Gateway" style=3D"b=
+order: solid 2px #9aa0a6; height: 16px; width: 16px; border-radius: 50%;"><=
+/div></td><td style=3D"min-width: 8px;"></td><td style=3D"word-break: break=
+-word;">A. NAT Gateway</td></tr></table></div><div style=3D"margin-top: 16p=
+x;"><table style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans=
+-serif;font-size: 14px; font-weight: 400; line-height: 20px;color: #70757a;=
+margin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"radio" aria-che=
+cked=3D"false" aria-label=3D"B. Internet Gateway" style=3D"border: solid 2p=
+x #9aa0a6; height: 16px; width: 16px; border-radius: 50%;"></div></td><td s=
+tyle=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;">B. Inte=
+rnet Gateway</td></tr></table></div><div style=3D"margin-top: 16px;"><table=
+ style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;fon=
+t-size: 14px; font-weight: 400; line-height: 20px;color: #70757a;margin-top=
+: 8px; table-layout: fixed;"><tr><td><div role=3D"radio" aria-checked=3D"fa=
+lse" aria-label=3D"C. VPN Gateway" style=3D"border: solid 2px #9aa0a6; heig=
+ht: 16px; width: 16px; border-radius: 50%;"></div></td><td style=3D"min-wid=
+th: 8px;"></td><td style=3D"word-break: break-word;">C. VPN Gateway</td></t=
+r></table></div><div style=3D"margin-top: 16px;"><table style=3D"color: #20=
+2124;font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 14px; font-w=
+eight: 400; line-height: 20px;margin-top: 8px; table-layout: fixed;"><tr><t=
+d><div role=3D"radio" aria-checked=3D"true" aria-label=3D"D. Virtual Privat=
+e Gateway" style=3D"border: solid 2px #5f6368; height: 16px; width: 16px; b=
+order-radius: 50%;"><div style=3D"background-color: #5f6368; border: solid =
+5px #5f6368; border-radius: 50%; margin: 3px; height: 0; width: 0;"></div><=
+/div></td><td style=3D"min-width: 8px;"></td><td style=3D"word-break: break=
+-word;">D. Virtual Private Gateway</td></tr></table></div></div></div><div =
+style=3D"border: 1px solid #dadce0; padding: 20px 12px;background-color: #f=
+ff; border-radius: 8px; margin-bottom: 12px;margin-bottom: 12px;"><div styl=
+e=3D"padding: 0 12px;"><h2 dir=3D"auto" style=3D"color: #202124;font-family=
+: Roboto,Helvetica,Arial,sans-serif;font-size: 16px; font-weight: 400; line=
+-height: 24px;white-space: pre-wrap;margin: 0 0 16px;">7.=C2=A0<span>Consid=
+er an AWS environment where a company has EC2 instances deployed in both pu=
+blic and private subnets. They need to configure access so that instances i=
+n the public subnet can receive and send internet traffic directly, while i=
+nstances in the private subnet can access the internet for updates without =
+being directly accessible from the internet. Which two services should they=
+ use? (Choose two)</span><span style=3D"color: #d93025;" aria-label=3D"=E5=
+=B0=87=E9=80=99=E5=80=8B=E5=95=8F=E9=A1=8C=E8=A8=AD=E7=82=BA=E5=BF=85=E5=A1=
+=AB"> *</span></h2></div><div style=3D"padding: 0 12px;"><div style=3D"marg=
+in-top: 16px;"><table style=3D"color: #202124;font-family: Roboto,Helvetica=
+,Arial,sans-serif;font-size: 14px; font-weight: 400; line-height: 20px;colo=
+r: #70757a;margin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"chec=
+kbox" aria-checked=3D"false" aria-label=3D"A. NAT Gateway" style=3D"border:=
+ solid 2px #9aa0a6; border-radius: 3px; height: 16px; width: 16px;"></div><=
+/td><td style=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;=
+">A. NAT Gateway</td></tr></table></div><div style=3D"margin-top: 16px;"><t=
+able style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif=
+;font-size: 14px; font-weight: 400; line-height: 20px;margin-top: 8px; tabl=
+e-layout: fixed;"><tr><td><div role=3D"checkbox" aria-checked=3D"true" aria=
+-label=3D"B. Internet Gateway" style=3D"border: solid 2px #5f6368; border-r=
+adius: 3px; height: 16px; width: 16px;background-color: #5f6368; color: #ff=
+f; font-size: 14px; line-height: 16px; text-align: center;">&#10003;</div><=
+/td><td style=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;=
+">B. Internet Gateway</td></tr></table></div><div style=3D"margin-top: 16px=
+;"><table style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-=
+serif;font-size: 14px; font-weight: 400; line-height: 20px;color: #70757a;m=
+argin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"checkbox" aria-c=
+hecked=3D"false" aria-label=3D"C. VPN Gateway" style=3D"border: solid 2px #=
+9aa0a6; border-radius: 3px; height: 16px; width: 16px;"></div></td><td styl=
+e=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;">C. VPN Gat=
+eway</td></tr></table></div><div style=3D"margin-top: 16px;"><table style=
+=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-size=
+: 14px; font-weight: 400; line-height: 20px;color: #70757a;margin-top: 8px;=
+ table-layout: fixed;"><tr><td><div role=3D"checkbox" aria-checked=3D"false=
+" aria-label=3D"D. Virtual Private Gateway" style=3D"border: solid 2px #9aa=
+0a6; border-radius: 3px; height: 16px; width: 16px;"></div></td><td style=
+=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;">D. Virtual =
+Private Gateway</td></tr></table></div><div style=3D"margin-top: 16px;"><ta=
+ble style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;=
+font-size: 14px; font-weight: 400; line-height: 20px;margin-top: 8px; table=
+-layout: fixed;"><tr><td><div role=3D"checkbox" aria-checked=3D"true" aria-=
+label=3D"E. Elastic Load Balancer" style=3D"border: solid 2px #5f6368; bord=
+er-radius: 3px; height: 16px; width: 16px;background-color: #5f6368; color:=
+ #fff; font-size: 14px; line-height: 16px; text-align: center;">&#10003;</d=
+iv></td><td style=3D"min-width: 8px;"></td><td style=3D"word-break: break-w=
+ord;">E. Elastic Load Balancer</td></tr></table></div></div></div><div styl=
+e=3D"border: 1px solid #dadce0; padding: 20px 12px;background-color: #fff; =
+border-radius: 8px; margin-bottom: 12px;margin-bottom: 12px;"><div style=3D=
+"padding: 0 12px;"><h2 dir=3D"auto" style=3D"color: #202124;font-family: Ro=
+boto,Helvetica,Arial,sans-serif;font-size: 16px; font-weight: 400; line-hei=
+ght: 24px;white-space: pre-wrap;margin: 0 0 16px;">8. A company is designin=
+g a web application that will run on Amazon EC2 instances.<br><br>Which AWS=
+ services and features will improve availability and reduce the impact of f=
+ailures for this application? (Choose two.)<span style=3D"color: #d93025;" =
+aria-label=3D"=E5=B0=87=E9=80=99=E5=80=8B=E5=95=8F=E9=A1=8C=E8=A8=AD=E7=82=
+=BA=E5=BF=85=E5=A1=AB"> *</span></h2></div><div style=3D"padding: 0 12px;">=
+<div style=3D"margin-top: 16px;"><table style=3D"color: #202124;font-family=
+: Roboto,Helvetica,Arial,sans-serif;font-size: 14px; font-weight: 400; line=
+-height: 20px;margin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"c=
+heckbox" aria-checked=3D"true" aria-label=3D"A. Amazon EC2 Auto Scaling for=
+ the EC2 instances" style=3D"border: solid 2px #5f6368; border-radius: 3px;=
+ height: 16px; width: 16px;background-color: #5f6368; color: #fff; font-siz=
+e: 14px; line-height: 16px; text-align: center;">&#10003;</div></td><td sty=
+le=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;">A. Amazon=
+ EC2 Auto Scaling for the EC2 instances</td></tr></table></div><div style=
+=3D"margin-top: 16px;"><table style=3D"color: #202124;font-family: Roboto,H=
+elvetica,Arial,sans-serif;font-size: 14px; font-weight: 400; line-height: 2=
+0px;color: #70757a;margin-top: 8px; table-layout: fixed;"><tr><td><div role=
+=3D"checkbox" aria-checked=3D"false" aria-label=3D"B. VPC subnet ACLs to ch=
+eck the health of a service" style=3D"border: solid 2px #9aa0a6; border-rad=
+ius: 3px; height: 16px; width: 16px;"></div></td><td style=3D"min-width: 8p=
+x;"></td><td style=3D"word-break: break-word;">B. VPC subnet ACLs to check =
+the health of a service</td></tr></table></div><div style=3D"margin-top: 16=
+px;"><table style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,san=
+s-serif;font-size: 14px; font-weight: 400; line-height: 20px;color: #70757a=
+;margin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"checkbox" aria=
+-checked=3D"false" aria-label=3D"C. Resources that are distributed across m=
+ultiple Availability Zones" style=3D"border: solid 2px #9aa0a6; border-radi=
+us: 3px; height: 16px; width: 16px;"></div></td><td style=3D"min-width: 8px=
+;"></td><td style=3D"word-break: break-word;">C. Resources that are distrib=
+uted across multiple Availability Zones</td></tr></table></div><div style=
+=3D"margin-top: 16px;"><table style=3D"color: #202124;font-family: Roboto,H=
+elvetica,Arial,sans-serif;font-size: 14px; font-weight: 400; line-height: 2=
+0px;margin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"checkbox" a=
+ria-checked=3D"true" aria-label=3D"D. Configuration of AWS Server Migration=
+ Service (AWS SMS) to move the EC2 instances to a different AWS Region" sty=
+le=3D"border: solid 2px #5f6368; border-radius: 3px; height: 16px; width: 1=
+6px;background-color: #5f6368; color: #fff; font-size: 14px; line-height: 1=
+6px; text-align: center;">&#10003;</div></td><td style=3D"min-width: 8px;">=
+</td><td style=3D"word-break: break-word;">D. Configuration of AWS Server M=
+igration Service (AWS SMS) to move the EC2 instances to a different AWS Reg=
+ion</td></tr></table></div><div style=3D"margin-top: 16px;"><table style=3D=
+"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 1=
+4px; font-weight: 400; line-height: 20px;color: #70757a;margin-top: 8px; ta=
+ble-layout: fixed;"><tr><td><div role=3D"checkbox" aria-checked=3D"false" a=
+ria-label=3D"E. Resources that are distributed across multiple AWS points o=
+f presence" style=3D"border: solid 2px #9aa0a6; border-radius: 3px; height:=
+ 16px; width: 16px;"></div></td><td style=3D"min-width: 8px;"></td><td styl=
+e=3D"word-break: break-word;">E. Resources that are distributed across mult=
+iple AWS points of presence</td></tr></table></div></div></div><div style=
+=3D"border: 1px solid #dadce0; padding: 20px 12px;background-color: #fff; b=
+order-radius: 8px; margin-bottom: 12px;margin-bottom: 12px;"><div style=3D"=
+padding: 0 12px;"><h2 dir=3D"auto" style=3D"color: #202124;font-family: Rob=
+oto,Helvetica,Arial,sans-serif;font-size: 16px; font-weight: 400; line-heig=
+ht: 24px;white-space: pre-wrap;margin: 0 0 16px;">9.=C2=A0<span>Which AWS s=
+ervice=C2=A0 can be used to set up a firewall to control traffic going into=
+ and coming out of an Amazon VPC subnet?=C2=A0 (Choose two.)</span></h2></d=
+iv><div style=3D"padding: 0 12px;"><div style=3D"margin-top: 16px;"><table =
+style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font=
+-size: 14px; font-weight: 400; line-height: 20px;margin-top: 8px; table-lay=
+out: fixed;"><tr><td><div role=3D"checkbox" aria-checked=3D"true" aria-labe=
+l=3D"A. AWS Firewall Manager" style=3D"border: solid 2px #5f6368; border-ra=
+dius: 3px; height: 16px; width: 16px;background-color: #5f6368; color: #fff=
+; font-size: 14px; line-height: 16px; text-align: center;">&#10003;</div></=
+td><td style=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;"=
+>A. AWS Firewall Manager</td></tr></table></div><div style=3D"margin-top: 1=
+6px;"><table style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sa=
+ns-serif;font-size: 14px; font-weight: 400; line-height: 20px;margin-top: 8=
+px; table-layout: fixed;"><tr><td><div role=3D"checkbox" aria-checked=3D"tr=
+ue" aria-label=3D"B. Security group" style=3D"border: solid 2px #5f6368; bo=
+rder-radius: 3px; height: 16px; width: 16px;background-color: #5f6368; colo=
+r: #fff; font-size: 14px; line-height: 16px; text-align: center;">&#10003;<=
+/div></td><td style=3D"min-width: 8px;"></td><td style=3D"word-break: break=
+-word;">B. Security group</td></tr></table></div><div style=3D"margin-top: =
+16px;"><table style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,s=
+ans-serif;font-size: 14px; font-weight: 400; line-height: 20px;color: #7075=
+7a;margin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"checkbox" ar=
+ia-checked=3D"false" aria-label=3D"C. Network ACL" style=3D"border: solid 2=
+px #9aa0a6; border-radius: 3px; height: 16px; width: 16px;"></div></td><td =
+style=3D"min-width: 8px;"></td><td style=3D"word-break: break-word;">C. Net=
+work ACL</td></tr></table></div><div style=3D"margin-top: 16px;"><table sty=
+le=3D"color: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-si=
+ze: 14px; font-weight: 400; line-height: 20px;color: #70757a;margin-top: 8p=
+x; table-layout: fixed;"><tr><td><div role=3D"checkbox" aria-checked=3D"fal=
+se" aria-label=3D"D. AWS WAF" style=3D"border: solid 2px #9aa0a6; border-ra=
+dius: 3px; height: 16px; width: 16px;"></div></td><td style=3D"min-width: 8=
+px;"></td><td style=3D"word-break: break-word;">D. AWS WAF</td></tr></table=
+></div></div></div><div style=3D"border: 1px solid #dadce0; padding: 20px 1=
+2px;background-color: #fff; border-radius: 8px; margin-bottom: 12px;margin-=
+bottom: 12px;"><div style=3D"padding: 0 12px;"><h2 dir=3D"auto" style=3D"co=
+lor: #202124;font-family: Roboto,Helvetica,Arial,sans-serif;font-size: 16px=
+; font-weight: 400; line-height: 24px;white-space: pre-wrap;margin: 0 0 16p=
+x;">10.=C2=A0<span>In the context of utilizing Amazon Web Services for appl=
+ication development, various interfaces facilitate interactions with AWS re=
+sources. Which of the following methods are valid for developers to communi=
+cate with AWS? (Choose three.)</span><span style=3D"color: #d93025;" aria-l=
+abel=3D"=E5=B0=87=E9=80=99=E5=80=8B=E5=95=8F=E9=A1=8C=E8=A8=AD=E7=82=BA=E5=
+=BF=85=E5=A1=AB"> *</span></h2></div><div style=3D"padding: 0 12px;"><div s=
+tyle=3D"margin-top: 16px;"><table style=3D"color: #202124;font-family: Robo=
+to,Helvetica,Arial,sans-serif;font-size: 14px; font-weight: 400; line-heigh=
+t: 20px;margin-top: 8px; table-layout: fixed;"><tr><td><div role=3D"checkbo=
+x" aria-checked=3D"true" aria-label=3D"Console" style=3D"border: solid 2px =
+#5f6368; border-radius: 3px; height: 16px; width: 16px;background-color: #5=
+f6368; color: #fff; font-size: 14px; line-height: 16px; text-align: center;=
+">&#10003;</div></td><td style=3D"min-width: 8px;"></td><td style=3D"word-b=
+reak: break-word;">Console</td></tr></table></div><div style=3D"margin-top:=
+ 16px;"><table style=3D"color: #202124;font-family: Roboto,Helvetica,Arial,=
+sans-serif;font-size: 14px; font-weight: 400; line-height: 20px;margin-top:=
+ 8px; table-layout: fixed;"><tr><td><div role=3D"checkbox" aria-checked=3D"=
+true" aria-label=3D"Command Line Interface (CLI)" style=3D"border: solid 2p=
+x #5f6368; border-radius: 3px; height: 16px; width: 16px;background-color: =
+#5f6368; color: #fff; font-size: 14px; line-height: 16px; text-align: cente=
+r;">&#10003;</div></td><td style=3D"min-width: 8px;"></td><td style=3D"word=
+-break: break-word;">Command Line Interface (CLI)</td></tr></table></div><d=
+iv style=3D"margin-top: 16px;"><table style=3D"color: #202124;font-family: =
+Roboto,Helvetica,Arial,sans-serif;font-size: 14px; font-weight: 400; line-h=
+eight: 20px;color: #70757a;margin-top: 8px; table-layout: fixed;"><tr><td><=
+div role=3D"checkbox" aria-checked=3D"false" aria-label=3D"Third-party mana=
+gement tools that utilize AWS APIs" style=3D"border: solid 2px #9aa0a6; bor=
+der-radius: 3px; height: 16px; width: 16px;"></div></td><td style=3D"min-wi=
+dth: 8px;"></td><td style=3D"word-break: break-word;">Third-party managemen=
+t tools that utilize AWS APIs</td></tr></table></div><div style=3D"margin-t=
+op: 16px;"><table style=3D"color: #202124;font-family: Roboto,Helvetica,Ari=
+al,sans-serif;font-size: 14px; font-weight: 400; line-height: 20px;margin-t=
+op: 8px; table-layout: fixed;"><tr><td><div role=3D"checkbox" aria-checked=
+=3D"true" aria-label=3D"Software Development Kits (SDKs)" style=3D"border: =
+solid 2px #5f6368; border-radius: 3px; height: 16px; width: 16px;background=
+-color: #5f6368; color: #fff; font-size: 14px; line-height: 16px; text-alig=
+n: center;">&#10003;</div></td><td style=3D"min-width: 8px;"></td><td style=
+=3D"word-break: break-word;">Software Development Kits (SDKs)</td></tr></ta=
+ble></div></div></div></div><table align=3D"center" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 672px; min-width: 154px; border-collapse: =
+separate; border-spacing: 0 0.2em;" width=3D"100%" role=3D"presentation"><t=
+body><tr height=3D"24px"><td></td></tr><tr><td><a href=3D"https://docs.goog=
+le.com/forms?usp=3Dmail_form_link" style=3D"color: #424242; font-size: 13px=
+;">=E5=BB=BA=E7=AB=8B=E8=87=AA=E5=B7=B1=E7=9A=84 Google =E8=A1=A8=E5=96=AE<=
+/a></td></tr><tr><td><a href=3D"https://docs.google.com/forms/u/0/d/e/1FAIp=
+QLSdD_iJnfpu-7P8VH8LR99pM-aSHK4fgXtZTKWdwHrlKMECUqQ/reportabuse?source=3Dht=
+tps://docs.google.com/forms/d/e/1FAIpQLSdD_iJnfpu-7P8VH8LR99pM-aSHK4fgXtZTK=
+WdwHrlKMECUqQ/viewform&amp;usp=3Dmail_receipt_abuse" target=3D"_blank" styl=
+e=3D"color: #424242; font-size: 13px;">=E6=AA=A2=E8=88=89=E6=BF=AB=E7=94=A8=
+=E6=83=85=E5=BD=A2</a></td></tr></tbody></table></div></body></html>
+--000000000000c8991d06184194ba--
